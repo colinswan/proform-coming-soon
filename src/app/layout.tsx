@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "UK delivery",
   ],
   authors: [{ name: siteName }],
-  themeColor: "#0B373D",
+  themeColor: "#ffffff",
   colorScheme: "light",
   viewport:
     "width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     locale: "en_GB",
     images: [
       {
-        url: "/og.jpg", // Add a 1200x630 image at public/og.jpg
+        url: "/og.jpg",
         width: 1200,
         height: 630,
         alt: "Proform Cladding Supplies — Coming Soon",
@@ -71,10 +71,6 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   manifest: "/site.webmanifest",
-  other: {
-    // Optional: basic structured data for Organization
-    // Will be injected in body via a script; see below if you prefer.
-  },
 };
 
 export default function RootLayout({
@@ -84,9 +80,10 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        // Body gets the light base background via globals.css variables
+        // Safe-area insets are used in the page component
       >
         {children}
-        {/* Structured data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

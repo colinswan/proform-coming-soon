@@ -38,8 +38,16 @@ export default function ComingSoonPage() {
   const progress = Math.min(100, Math.max(0, Math.round(getProgress(now))));
 
   return (
-    <div className="relative h-[100dvh] w-full overflow-hidden">
-      {/* Box/grid background with diagonal fade from top-left */}
+    <div
+      className="relative w-full overflow-hidden"
+      style={{
+        backgroundColor: "#ffffff", // SOLID base behind mask
+        minHeight: "100dvh", // dynamic viewport height
+        paddingTop: "env(safe-area-inset-top)",
+        paddingBottom: "env(safe-area-inset-bottom)",
+      }}
+    >
+      {/* Grid background with diagonal fade; remove mask on tiny screens via .mask-none if needed */}
       <div
         aria-hidden
         className="absolute inset-0 z-0"
@@ -49,16 +57,24 @@ export default function ComingSoonPage() {
             "linear-gradient(to right, #e5e7eb 1px, transparent 1px), linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)",
           backgroundSize: "32px 32px",
           WebkitMaskImage:
-            "radial-gradient(ellipse 80% 80% at 0% 0%, #000 50%, transparent 90%)",
+            "radial-gradient(ellipse 90% 80% at 10% 10%, #000 60%, transparent 96%)",
           maskImage:
-            "radial-gradient(ellipse 80% 80% at 0% 0%, #000 50%, transparent 90%)",
+            "radial-gradient(ellipse 90% 80% at 10% 10%, #000 60%, transparent 96%)",
         }}
       />
 
-      {/* Foreground content */}
-      <div className="relative z-10 grid h-[100dvh] grid-rows-[auto,1fr,auto] px-5">
-        <div className="h-6 sm:h-8" />
+      {/* Foreground content – must also fill screen */}
+      <div
+        className="relative z-10 grid px-5"
+        style={{
+          minHeight: "100dvh",
+          gridTemplateRows: "auto 1fr auto",
+        }}
+      >
+        {/* Top spacer (smaller on mobile) */}
+        <div className="h-3 sm:h-8" />
 
+        {/* Center content */}
         <main className="mx-auto flex w-full max-w-4xl flex-col items-center justify-center gap-6 text-center sm:gap-7">
           <h1
             className="font-heading text-balance text-[28px] font-extrabold leading-tight sm:text-5xl md:text-6xl"
@@ -97,7 +113,7 @@ export default function ComingSoonPage() {
             </div>
             <div
               className="h-2 w-full rounded-full"
-              style={{ backgroundColor: "rgba(63,63,65,0.2)" }} // #3F3F41 @ 20%
+              style={{ backgroundColor: "rgba(63,63,65,0.2)" }}
             >
               <div
                 className="h-2 rounded-full transition-[width] duration-1000 ease-linear"
@@ -116,6 +132,7 @@ export default function ComingSoonPage() {
           </div>
         </main>
 
+        {/* Footer */}
         <footer className="mb-4 flex items-center justify-center">
           <p
             className="text-center text-[11px] sm:text-xs"
