@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 
 const START_DATE = new Date("2025-09-01T00:00:00Z");
 const LAUNCH_DATE = new Date("2026-01-05T09:00:00Z"); // Jan 5, 2026
@@ -76,19 +77,29 @@ export default function ComingSoonPage() {
 
         {/* Center content */}
         <main className="mx-auto flex w-full max-w-4xl flex-col items-center justify-center gap-6 text-center sm:gap-7">
+          <div className="flex items-center justify-center">
+            <Image
+              src="/proform-logo.svg"
+              alt="Proform Cladding Supplies logo"
+              width={320}
+              height={80}
+              priority
+              className="h-12 w-auto sm:h-12 md:h-20"
+            />
+          </div>
           <h1
             className="font-heading text-balance text-[28px] font-extrabold leading-tight sm:text-5xl md:text-6xl"
-            style={{ color: "#3F3F41" }}
+            style={{ color: "#1E3F6D" }}
           >
             Premium Cladding.
-            <span className="block" style={{ color: "#479BB0" }}>
+            <span className="block" style={{ color: "#828282" }}>
               Built for Contractors.
             </span>
           </h1>
 
           <p
             className="max-w-xl text-pretty text-sm sm:text-base"
-            style={{ color: "#3F3F41" }}
+            style={{ color: "#828282" }}
           >
             Launching January 5, 2026. Fast UK delivery of sheets, trims, and
             fixings.
@@ -106,26 +117,26 @@ export default function ComingSoonPage() {
           <div className="w-full max-w-2xl">
             <div
               className="mb-1 flex items-center justify-between text-[11px] sm:text-xs"
-              style={{ color: "#3F3F41" }}
+              style={{ color: "#828282" }}
             >
               <span>Build progress</span>
               <span>{progress}%</span>
             </div>
             <div
               className="h-2 w-full rounded-full"
-              style={{ backgroundColor: "rgba(63,63,65,0.2)" }}
+              style={{ backgroundColor: "rgba(130,130,130,0.25)" }}
             >
               <div
                 className="h-2 rounded-full transition-[width] duration-1000 ease-linear"
                 style={{
                   width: `${progress}%`,
-                  backgroundColor: "#479BB0",
+                  backgroundColor: "#CF8226",
                 }}
               />
             </div>
             <p
               className="mt-1 text-center text-[11px] sm:text-xs"
-              style={{ color: "rgba(63,63,65,0.75)" }}
+              style={{ color: "rgba(130,130,130,0.85)" }}
             >
               From Sep 1, 2025 to Jan 5, 2026
             </p>
@@ -136,7 +147,7 @@ export default function ComingSoonPage() {
         <footer className="mb-4 flex items-center justify-center">
           <p
             className="text-center text-[11px] sm:text-xs"
-            style={{ color: "rgba(63,63,65,0.75)" }}
+            style={{ color: "rgba(130,130,130,0.85)" }}
           >
             © {new Date().getFullYear()} Proform Cladding Supplies
           </p>
@@ -159,13 +170,13 @@ function Tile({ label, value }: { label: string; value: number }) {
     >
       <div
         className="font-heading text-2xl font-bold sm:text-3xl md:text-4xl"
-        style={{ color: "#3F3F41" }}
+        style={{ color: "#1E3F6D" }}
       >
         {v}
       </div>
       <div
         className="mt-0.5 text-[11px] uppercase sm:text-xs"
-        style={{ color: "rgba(63,63,65,0.65)" }}
+        style={{ color: "rgba(130,130,130,0.75)" }}
       >
         {label}
       </div>
