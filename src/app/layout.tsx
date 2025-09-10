@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
+const montserrat = Montserrat({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 const geistMono = Geist_Mono({
@@ -79,7 +80,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${montserrat.variable} ${geistMono.variable} antialiased`}
         // Body gets the light base background via globals.css variables
         // Safe-area insets are used in the page component
       >
